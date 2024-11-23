@@ -8,7 +8,7 @@ from google.auth.transport.requests import Request
 
 # Define the scopes for Google Calendar
 SCOPES = ['https://www.googleapis.com/auth/calendar']
-#os.environ['GOOGLE_API_CREDENTIALS'] = r'client_secret.json'
+os.environ['GOOGLE_API_CREDENTIALS'] = r'client_secret.json'
 def get_google_calendar_service():
     """Authenticate and return a Google Calendar service instance."""
     creds = None
@@ -74,3 +74,5 @@ def delete_event_from_google(instance, calendar_id):
         print(f"Deleted event: {instance.event_id}")
     except Exception as e:
         print(f"Error deleting event: {e}")
+
+service = get_google_calendar_service()
