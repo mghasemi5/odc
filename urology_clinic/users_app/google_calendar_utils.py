@@ -15,14 +15,17 @@ def get_google_calendar_service():
     token_json = os.getenv('GOOGLE_API_TOKEN')
 
     # Load existing credentials if available
-    if os.path.exists(token_json):
+    if token_json:
         creds = Credentials.from_authorized_user_file(token_json, SCOPES)
-
+        print("GOOGLE_API_TOKEN found. Attempting to load credentials.")
     # Authenticate if no valid credentials are found
     if not creds or not creds.valid:
+        print("No valid credentials found or credentials expired.")
         if creds and creds.expired and creds.refresh_token:
+            print("Refreshing credentials...")
             creds.refresh(Request())  # Refresh the access token
         else:
+            print("Initiating OAuth flow...")
             flow = InstalledAppFlow.from_client_secrets_file(
                 os.getenv('GOOGLE_API_CREDENTIALS'), SCOPES
             )
@@ -30,6 +33,7 @@ def get_google_calendar_service():
 
             # Save new token back to environment variable (ephemeral storage on Render)
             os.environ['GOOGLE_API_TOKEN'] = creds.to_json()
+            print("New credentials obtained and saved.")
 
     return build('calendar', 'v3', credentials=creds)
 
