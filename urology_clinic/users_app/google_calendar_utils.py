@@ -8,15 +8,15 @@ from google.auth.transport.requests import Request
 
 # Define the scopes for Google Calendar
 SCOPES = ['https://www.googleapis.com/auth/calendar']
-os.environ['GOOGLE_API_CREDENTIALS'] = r'client_secret.json'
+#os.environ['GOOGLE_API_CREDENTIALS'] = r'client_secret.json'
 def get_google_calendar_service():
     """Authenticate and return a Google Calendar service instance."""
     creds = None
-    token_file = 'token.json'  # File where tokens are stored
+    token_json = os.getenv('GOOGLE_API_TOKEN')
 
     # Load existing credentials if available
-    if os.path.exists(token_file):
-        creds = Credentials.from_authorized_user_file(token_file, SCOPES)
+    if os.path.exists(token_json):
+        creds = Credentials.from_authorized_user_file(token_json, SCOPES)
 
     # Authenticate if no valid credentials are found
     if not creds or not creds.valid:
@@ -28,9 +28,8 @@ def get_google_calendar_service():
             )
             creds = flow.run_local_server(port=0, access_type='offline', prompt='consent')  # Request offline access
 
-        # Save the credentials for future use
-        with open(token_file, 'w') as token:
-            token.write(creds.to_json())
+            # Save new token back to environment variable (ephemeral storage on Render)
+            os.environ['GOOGLE_API_TOKEN'] = creds.to_json()
 
     return build('calendar', 'v3', credentials=creds)
 
