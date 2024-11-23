@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Delete {{ item_type }}</title>
+</head>
+<body>
+<div class="account-container">
+    <h1>Are you sure you want to delete this {{ item_type }}?</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Yes, Delete</button>
+    </form>
+    <a href="{% url cancel_url %}">Cancel</a>
+</div>
+
+</body>
+</html>

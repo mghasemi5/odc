@@ -1,0 +1,364 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Container Styling */
+.account-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    max-width: 95%;
+    width: auto;
+    min-width: 300px; /* Ensure it doesn't shrink too much */
+    margin: 20px auto;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Responsive Text & Containers */
+li {
+    list-style: none;
+    background: #f9f9f9;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: auto; /* Allow the width to adapt to content */
+    max-width: 100%;
+}
+
+/* Buttons and Content Inside List */
+li button, li .button-link {
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    background-color: #AC00ED;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+}
+
+li button:hover, li .button-link:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Responsive Layout for Smaller Screens */
+@media (max-width: 768px) {
+    .account-container {
+        width: 90%; /* Adjust the width for smaller screens */
+    }
+
+    li {
+        flex-direction: column; /* Stack content vertically */
+        align-items: flex-start; /* Align content to the left */
+    }
+
+    li button, li .button-link {
+        margin: 5px 0; /* Space buttons vertically */
+        width: 100%; /* Make buttons full-width */
+        text-align: center;
+    }
+}
+
+/* Section Container */
+.section-container {
+    background: #EDEDED;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    text-align: center; /* Align text to the left by default */
+}
+
+.section-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Section Title */
+.section-container h3 {
+    margin: 0 0 15px 0;
+    font-size: 20px;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+}
+
+/* Section Content */
+.section-container p, .section-container ul, .section-container form {
+    margin: 5px;
+    padding: 0;
+}
+
+.section-container a {
+    display: inline-block; /* Ensure it's treated like a button */
+    padding: 8px 15px;
+    font-size: 16px; /* Slightly reduce font size for better balance */
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin: 5px 5px; /* Add top margin for spacing */
+    background-color: #AC00ED;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+}
+
+.section-container table {
+    width: 100%; /* Use full width of the container */
+    border-collapse: collapse; /* Merge table borders */
+    margin: 15px 0;
+    font-size: 16px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+.section-container table thead {
+    background-color: #007BFF; /* Header background color */
+    color: white; /* Header text color */
+    text-align: left; /* Align header text to the left */
+}
+
+.section-container table th, 
+.section-container table td {
+    padding: 12px 15px; /* Add padding for better spacing */
+    border: 1px solid #ddd; /* Add light border between cells */
+    text-align: left; /* Align text to the left */
+}
+
+.section-container table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Add striped rows */
+}
+
+.section-container table tbody tr:hover {
+    background-color: #f1f1f1; /* Highlight row on hover */
+}
+
+.section-container table caption {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Responsive Table for Smaller Screens */
+@media (max-width: 768px) {
+    .section-container table {
+        font-size: 14px; /* Adjust font size for small screens */
+    }
+
+    .section-container table th, 
+    .section-container table td {
+        padding: 10px; /* Reduce padding */
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .section-container {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+
+    .section-container h3 {
+        font-size: 18px;
+    }
+}
+
+/* Typography */
+h1 {
+    font-size: 28px;
+    color: #333333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+h2, h3 {
+    font-size: 22px;
+    color: #555555;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 10px;
+}
+
+/* List Styling */
+ul {
+    padding-left: 0;
+    margin: 20px 0;
+}
+
+li {
+    list-style: none;
+    background: #f9f9f9;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Buttons Inside List */
+li button, li .button-link {
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    background-color: #AC00ED;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+}
+
+li button:hover, li .button-link:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+li button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Flexibility for Long Text */
+li span {
+    flex-grow: 1;
+    font-size: 16px;
+    color: #333;
+    margin-right: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* Buttons and Links */
+button, .button-link {
+    background-color: #AC00ED;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    margin: 5px;
+    display: inline-block;
+}
+
+button:hover, .button-link:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.button-link {
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Forms */
+form {
+    margin: 20px 10px;
+    text-align: left;
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+    border-color: #AC00ED;
+    outline: none;
+}
+
+form button {
+    display: block; /* Ensures it occupies its line */
+    margin: 20px auto; /* Centers horizontally */
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #AC00ED;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+    .account-container {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    button, .button-link {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}

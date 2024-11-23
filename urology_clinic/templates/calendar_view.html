@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.js"></script>
+</head>
+<style>
+    /* Calendar Container */
+.calendar {
+    max-width: 900px; /* Limit maximum width */
+    margin: 30px auto; /* Center the calendar on the page */
+    padding: 15px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    overflow: hidden; /* Handle content overflow gracefully */
+}
+
+/* FullCalendar Header Styling */
+.fc-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+.fc-toolbar .fc-button {
+    background-color: #007BFF; /* Primary button color */
+    border: none;
+    color: #fff;
+    padding: 8px 8px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.fc-toolbar .fc-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.fc-toolbar .fc-button-group {
+    display: flex;
+    gap: 10px;
+}
+
+/* FullCalendar Day Headers */
+.fc .fc-col-header-cell {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* FullCalendar Event Styling */
+.fc-event {
+    background-color: #28a745; /* Green for events */
+    border: none;
+    color: white;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.fc-event:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* FullCalendar Grid and Dates */
+.fc .fc-daygrid-day {
+    border: 1px solid #ddd; /* Border around day cells */
+    height: 120px; /* Fixed height for consistent rows */
+    vertical-align: top; /* Align content to the top */
+}
+
+.fc .fc-daygrid-day:hover {
+    background-color: #f8f9fa; /* Subtle highlight on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .calendar {
+        max-width: 100%; /* Adjust to fit smaller screens */
+        padding: 10px;
+    }
+
+    .fc-toolbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .fc .fc-daygrid-day {
+        height: 80px; /* Adjust day height for smaller screens */
+    }
+
+    .fc-event {
+        font-size: 12px; /* Reduce font size for small screens */
+    }
+}
+
+</style>
+<body>
+<div class="calendar">
+    <div class="container">
+        <h1>Calendar View for Dr. {{ doctor.user.last_name }} </h1>
+        <div id="calendar"><script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'timeGridWeek',
+                events: '{{ events_url }}',  // Dynamic events URL passed from the view
+            });
+            calendar.render();
+        });
+    </script></div>
+    </div>
+
+</div>
+
+</body>
+</html>
