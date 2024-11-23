@@ -73,5 +73,3 @@ def delete_event_from_google(instance, calendar_id):
         print(f"Deleted event: {instance.event_id}")
     except Exception as e:
         print(f"Error deleting event: {e}")
-
-service = get_google_calendar_service()
