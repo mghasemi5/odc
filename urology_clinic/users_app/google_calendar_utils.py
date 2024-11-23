@@ -8,7 +8,7 @@ from google.auth.transport.requests import Request
 
 # Define the scopes for Google Calendar
 SCOPES = ['https://www.googleapis.com/auth/calendar']
-os.environ['GOOGLE_API_CREDENTIALS'] = r'client_secret.json'
+#os.environ['GOOGLE_API_CREDENTIALS'] = r'client_secret.json'
 def get_google_calendar_service():
     """Authenticate and return a Google Calendar service instance."""
     creds = None
