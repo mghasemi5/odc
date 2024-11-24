@@ -130,7 +130,6 @@ def doctor_timesharing_booking(request):
                     start_time=f"{timesharing.date}T{timesharing.start_time}",
                     end_time=f"{timesharing.date}T{timesharing.end_time}",
                 )
-                print("Sync to Google Calendar completed.")  # Debug log
             except Exception as e:
                 print(f"Error syncing timesharing to Google Calendar: {e}")
             return redirect('doctor_dashboard')  # Redirect to doctor dashboard
