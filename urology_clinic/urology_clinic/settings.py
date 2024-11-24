@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-j^z$$(kg$@rbja79z+bp46@o91q&(l%*1u+e4es*2cssxit(5$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -152,4 +152,4 @@ STATICFILES_DIRS = [
 ]
 GOOGLE_API_CREDENTIALS = os.path.join(BASE_DIR, 'client_secret.json')
 
-ALLOWED_HOSTS = ['mogh77.pythonanywhere.com']
+ALLOWED_HOSTS = []

@@ -8,7 +8,7 @@ from google.auth.transport.requests import Request
 
 # Define the scopes for Google Calendar
 SCOPES = ['https://www.googleapis.com/auth/calendar']
-os.environ['GOOGLE_API_CREDENTIALS'] = r'C:\Users\User\Desktop\Mehrad ODC\client_secret.json'
+os.environ['GOOGLE_API_CREDENTIALS'] = r'C:\Users\User\Desktop\Mehrad ODC\urology_clinic\users_app\client_secret.json'
 def get_google_calendar_service():
     """Authenticate and return a Google Calendar service instance."""
     creds = None
@@ -26,7 +26,8 @@ def get_google_calendar_service():
             flow = InstalledAppFlow.from_client_secrets_file(
                 os.getenv('GOOGLE_API_CREDENTIALS'), SCOPES
             )
-            creds = flow.run_local_server(port=0, access_type='offline', prompt='consent')  # Request offline access
+            flow.redirect_uri = 'http://localhost:8000'
+            creds = flow.run_local_server(port=8000, access_type='offline', prompt='consent')  # Request offline access
 
         # Save the credentials for future use
         with open(token_file, 'w') as token:
