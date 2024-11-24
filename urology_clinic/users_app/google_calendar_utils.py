@@ -8,32 +8,29 @@ from google.auth.transport.requests import Request
 
 # Define the scopes for Google Calendar
 SCOPES = ['https://www.googleapis.com/auth/calendar']
-#os.environ['GOOGLE_API_CREDENTIALS'] = r'client_secret.json'
+os.environ['GOOGLE_API_CREDENTIALS'] = r'C:\Users\User\Desktop\Mehrad ODC\client_secret.json'
 def get_google_calendar_service():
     """Authenticate and return a Google Calendar service instance."""
     creds = None
-    token_json = os.getenv('GOOGLE_API_TOKEN')
+    token_file = 'token.json'  # File where tokens are stored
 
     # Load existing credentials if available
-    if token_json:
-        creds = Credentials.from_authorized_user_file(token_json, SCOPES)
-        print("GOOGLE_API_TOKEN found. Attempting to load credentials.")
+    if os.path.exists(token_file):
+        creds = Credentials.from_authorized_user_file(token_file, SCOPES)
+
     # Authenticate if no valid credentials are found
     if not creds or not creds.valid:
-        print("No valid credentials found or credentials expired.")
         if creds and creds.expired and creds.refresh_token:
-            print("Refreshing credentials...")
             creds.refresh(Request())  # Refresh the access token
         else:
-            print("Initiating OAuth flow...")
             flow = InstalledAppFlow.from_client_secrets_file(
                 os.getenv('GOOGLE_API_CREDENTIALS'), SCOPES
             )
             creds = flow.run_local_server(port=0, access_type='offline', prompt='consent')  # Request offline access
 
-            # Save new token back to environment variable (ephemeral storage on Render)
-            os.environ['GOOGLE_API_TOKEN'] = creds.to_json()
-            print("New credentials obtained and saved.")
+        # Save the credentials for future use
+        with open(token_file, 'w') as token:
+            token.write(creds.to_json())
 
     return build('calendar', 'v3', credentials=creds)
 
