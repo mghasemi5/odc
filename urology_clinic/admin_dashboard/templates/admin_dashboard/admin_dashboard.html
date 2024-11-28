@@ -1,0 +1,12 @@
+<!-- admin_dashboard.html -->
+<h1>Welcome to the Admin Dashboard</h1>
+<p>Use the links below to manage the clinic:</p>
+
+<ul>
+    <li><a href="{% url 'user_management' %}">Manage Users</a></li>
+    <li><a href="{% url 'appointment_management' %}">Manage Appointments</a></li>
+    <li><a href="{% url 'timesharing_management' %}">Manage Timesharing</a></li>
+    <li><a href="{% url 'devicesharing_management' %}">Manage Devicesharing</a></li>
+    <li><a href="{% url 'financial_reports' %}">View Financial Reports</a></li>
+    <li><a href="{% url 'system_settings' %}">System Settings</a></li>
+</ul>

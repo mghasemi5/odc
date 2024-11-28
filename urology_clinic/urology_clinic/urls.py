@@ -18,5 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('users_app.urls')),  # Includes URLs from the users_app
+    path('users_app/', include('users_app.urls')),  # Includes URLs from the users_app
+    path('payment/', include('payment.urls')),  # Include payment URLs
+    path('dashboard/', include('admin_dashboard.urls')),  # Custom admin dashboard,
 ]

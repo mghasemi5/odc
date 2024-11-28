@@ -93,3 +93,5 @@ class Devicesharing(models.Model):
     def __str__(self):
         return f"{self.device.name} booked by Dr. {self.doctor.user.username} on {self.date}"
 
+
+

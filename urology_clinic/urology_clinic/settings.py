@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #myapps
-    'users_app'
+    'users_app',
+    'payment',
+    'admin_dashboard'
 ]
 
 MIDDLEWARE = [
@@ -153,3 +155,12 @@ STATICFILES_DIRS = [
 GOOGLE_API_CREDENTIALS = os.path.join(BASE_DIR, 'client_secret.json')
 
 ALLOWED_HOSTS = []
+
+# settings.py
+ZARINPAL_MERCHANT_ID = "e21cee4a3b6e4c00901f440627a207af"  # Replace with your real merchant ID
+ZARINPAL_CALLBACK_URL = "http://localhost/payment/verify/"  # Replace with your real domain
+ZARINPAL_SANDBOX = True  # Set to False in production
+
+# Determine the API base URL based on the sandbox setting
+ZARINPAL_API_BASE = "https://sandbox.zarinpal.com/pg/v4" if ZARINPAL_SANDBOX else "https://api.zarinpal.com/pg/v4"
+ZARINPAL_START_PAY = "https://sandbox.zarinpal.com/pg/StartPay" if ZARINPAL_SANDBOX else "https://www.zarinpal.com/pg/StartPay"

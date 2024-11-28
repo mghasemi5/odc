@@ -1,0 +1,10 @@
+<form method="POST">
+    {% csrf_token %}
+    <label for="amount">Amount (in Rials):</label>
+    <input type="number" name="amount" required>
+    <label for="mobile">Mobile (optional):</label>
+    <input type="text" name="mobile">
+    <label for="email">Email (optional):</label>
+    <input type="email" name="email">
+    <button type="submit">Pay Now</button>
+</form>

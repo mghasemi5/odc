@@ -38,4 +38,5 @@ urlpatterns = [
     path('calendar/patient/', patient_calendar_view, name='patient_calendar'),
     path('api/calendar/patient/', patient_calendar_events, name='patient_calendar_events'),
 
+
 ]
